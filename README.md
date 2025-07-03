@@ -5,7 +5,7 @@ I wanted a better way to monitor the performance of my own portfolio holdings. T
 
 First create a list of the tickers in portfolio and create date variables 
 
-'''Ruby
+```ruby
 tickers_list = ['GOOGL','AMZN','MSFT','SONY','AXP','AAPL','KO','EQNR','NKE']
 
 
@@ -22,12 +22,12 @@ else:
 
 #Subtract day_num from today's date 
 som = dt - timedelta(days=int(day_num) - 1)
-'''
+```
 
 
 Next, pull in the relevant data in from yfinance and convert the data frame of prices into 1 dataframe after using pct_change() 
 
-'''Ruby 
+```ruby 
 
 last_night_prices = yf.download(tickers=tickers_list, start=dt1, end=dt)['Close']
 Day_before_last_prices = last_night_prices.head(1)
@@ -60,20 +60,20 @@ ITD_pnl = ITD_latest.pct_change()
 #Combine to one df 
 pnl_df = pd.concat([ITD_pnl, YTD_pnl, MTD_pnl, DTD_pnl]).sort_values(by='Date').dropna()
 pnl_df = pnl_df.reset_index(drop=True) 
-'''
+```
 
 Create a new index column and add it to existing dataframe
 
-'''Ruby
+```ruby
 new_index = {'': ['ITD', 'YTD', 'MTD', 'DTD']} 
 new_index_df = pd.DataFrame(new_index)
 
 final_pnl_df = pd.merge(new_index_df, pnl_df, left_index=True, right_index=True)
-'''
+```
 
 Finally, import email libraries and foramt HTML table and send out final email
 
-'''Ruby
+```ruby
 import win32com.client as win32
 
 #Format table
@@ -103,7 +103,7 @@ mail.Subject = 'PNL Summary ' + str(dt)
 body = '<html><body><h4> Darren Ofoe - PNL History <h4>' + table_style.to_html() + '</body></html>'
 mail.HTMLbody = body
 mail.Display() 
-'''
+```
 
 Here's the final output which is sent to my gmail daily.
 
