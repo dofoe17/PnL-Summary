@@ -112,5 +112,26 @@ Here's the final output which is sent to my gmail daily.
 
 So we can see my top performing stock performance to date is American Express. Let's visualise this: 
 
+'''ruby
+#Create Visualisation of top performing stock AXP
+ticker = 'AXP'
+vis_df = yf.download(ticker, start='2023-10-13', end=dt1, multi_level_index=False)
+fig = go.Figure(data=[go.Candlestick(x=vis_df.index,
+                                     open=vis_df['Open'],
+                                     high=vis_df['High'],
+                                     low=vis_df['Low'],
+                                     close=vis_df['Close'])])
+
+fig.update_layout(
+    title = f'{ticker} Stock Price',
+    xaxis_title = 'Date',
+    yaxis_title = 'Price (USD)' 
+    #xaxis_rangeslider_visible = False  
+)
+fig.show() 
+'''
+
+<img width="1860" height="847" alt="image" src="https://github.com/user-attachments/assets/7607ff89-9232-4faf-8b10-0033e48cce83" />
+
 
 
