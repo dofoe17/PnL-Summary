@@ -107,4 +107,10 @@ mail.Display()
 
 Here's the final output which is sent to my gmail daily.
 
-![image](https://github.com/user-attachments/assets/2a4bc87e-e929-4945-a794-deba8f325942)
+<img width="1105" height="619" alt="image" src="https://github.com/user-attachments/assets/1aed7c8b-9064-4ed6-b456-603d235c13f3" />
+
+
+So we can see my top performing stock performance to date is American Express. Let's visualise this: 
+
+
+
