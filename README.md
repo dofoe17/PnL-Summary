@@ -114,24 +114,23 @@ So we can see my top performing stock performance to date is American Express. L
 
 ```ruby
 #Create Visualisation of top performing stock AXP
+import mplfinance as mpf 
+
 ticker = 'AXP'
 vis_df = yf.download(ticker, start='2023-10-13', end=dt1, multi_level_index=False)
-fig = go.Figure(data=[go.Candlestick(x=vis_df.index,
-                                     open=vis_df['Open'],
-                                     high=vis_df['High'],
-                                     low=vis_df['Low'],
-                                     close=vis_df['Close'])])
 
-fig.update_layout(
-    title = f'{ticker} Stock Price',
-    xaxis_title = 'Date',
-    yaxis_title = 'Price (USD)' 
-    #xaxis_rangeslider_visible = False  
-)
-fig.show() 
+mpf.plot(vis_df,
+         type = 'candle',
+         title = f'{ticker} Stock Price',
+         xlabel = 'Date',
+         ylabel = 'Price',
+         style = 'yahoo')
+mpf.show() 
+
 ```
 
-<img width="1860" height="847" alt="image" src="https://github.com/user-attachments/assets/7607ff89-9232-4faf-8b10-0033e48cce83" />
+<img width="1723" height="958" alt="image" src="https://github.com/user-attachments/assets/2f8ab2c7-8f5e-413b-8510-2856b221fb96" />
+
 
 
 
